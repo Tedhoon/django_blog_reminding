@@ -1,0 +1,9 @@
+
+<form action="{%url 'edit' detail.id%}" method="POST">
+    
+        {{editblogform}}    
+        {% csrf_token %}
+
+        <input type="submit" value="수정완료">
+    </form> 
+    

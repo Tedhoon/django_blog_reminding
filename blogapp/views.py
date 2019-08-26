@@ -10,12 +10,12 @@ def index(request):
 
 
 def post(request): 
-    if request.method == 'POST': #등록
+    if request.method == 'POST': #글쓰기 등록
         forms = BlogForm(request.POST)  
         if forms.is_valid():
             forms.save()
             return redirect('index')       
-    else: #수정
+    else: #글쓰기 페이지 들어가기
         forms = BlogForm()
     return render(request , 'post.html' ,{'forms' : forms})
 
@@ -24,3 +24,19 @@ def detail(request , blog_id):
     
     
     return render(request , 'detail.html', {'detail':details})
+
+
+def edit(request, detail_id):
+    #먼저 해당 객체폼을 가져와야하잖아!
+    detail = get_object_or_404(Blog, pk = detail_id)
+    #여기서 진짜 중요 edit에 detail.id를 넘기고 싶으니까 객체 이름을 이렇게 똑같이 해줘야합니다 ㅠㅠ
+    # 그러니까 정리하자면 pk값을 쓰기 위해 get_object_or_404로 가져와야서 넘겨줘야함
+
+    editblogform = BlogForm(instance = detail)
+    if request.method == 'POST':
+        editblogforms = BlogForm(request.POST , instance = detail)
+        if editblogforms.is_valid():
+            editblogforms.save()
+            return redirect('detail')
+    
+    return render(request, 'edit.html' ,{'editblogform':editblogform , 'detail' : detail})

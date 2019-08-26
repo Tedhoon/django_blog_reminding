@@ -7,6 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    디테일페이지{{detail}}
+    id : {{detail.id}}
+    <br>
+    title : {{detail.title}}
+    <br>
+    text : {{detail.text}}
+    <br>
+    created_at : {{detail.created_at}}
+
+    <a href="{% url 'edit' detail.id %}">수정</a>
 </body>
 </html>
