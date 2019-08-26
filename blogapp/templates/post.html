@@ -1,0 +1,7 @@
+
+<form action="{% url 'post'%}" method="POST">
+    {{forms.as_p}}
+
+    {% csrf_token %}
+    <input type="submit" value="글쓰기">
+</form> 

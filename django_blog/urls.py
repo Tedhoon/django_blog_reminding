@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path ,include
-
+from django.shortcuts import redirect
 
 urlpatterns = [
+    path('', lambda r : redirect('index') , name = "root"), #최상위 주소로 갈 때 redirect시키기
+
     path('admin/', admin.site.urls),
     path('', include('blogapp.urls')),
 ]
