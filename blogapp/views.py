@@ -34,9 +34,15 @@ def edit(request, detail_id):
 
     editblogform = BlogForm(instance = detail)
     if request.method == 'POST':
-        editblogforms = BlogForm(request.POST , instance = detail)
+        editblogforms = BlogForm(request.POST , instance = detail) #흐름대로 설명하자면 해당 블로그 pk값 블록폼을 instance로 가져오고 requset.POST내용을 저장한다 이말임
         if editblogforms.is_valid():
             editblogforms.save()
-            return redirect('detail')
+            return redirect('index')
     
     return render(request, 'edit.html' ,{'editblogform':editblogform , 'detail' : detail})
+
+
+def delete(request , blog_id):
+    detail = get_object_or_404(Blog, pk = blog_id)
+    detail.delete()
+    return redirect('index')
