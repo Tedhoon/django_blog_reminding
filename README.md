@@ -21,3 +21,5 @@ urlpatterns = [
 ```python
 editblogform = BlogForm(instance = detail) 
 ```
+
+<li>accounts의 User 모델은 django.contrib.auth.models에서 User을 가져와서 쓸것임다 일단 이거 그만해야지...
