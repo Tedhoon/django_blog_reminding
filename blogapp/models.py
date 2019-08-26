@@ -1,8 +1,10 @@
 from django.db import models
 
-class Blog(Model.models):
-    title = CharField(max_length =100)
+class Blog(models.Model):
+    title = models.CharField(max_length =100)
     
-    text = CharField(max_length = 100)
+    text = models.CharField(max_length = 100)
     
-    created_at = 
+    created_at = models.DateTimeField(auto_now_add = True)
+
+    
